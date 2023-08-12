@@ -34,13 +34,6 @@ class BaseModel(Base):
         default=True,
         server_default=expression.true(),
     )
-    old_id = Column(
-        BigInteger,
-        index=True,
-        nullable=True,
-        unique=True,
-        comment="ID в текущем биллинге",
-    )
 
     def as_dict(self) -> dict:
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
